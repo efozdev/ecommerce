@@ -13,7 +13,7 @@ function Details() {
   const [pinfo, setPinfo] = useState(null)
 
   useEffect(() => {
-    axios.get(`https://fakestoreapi.com/products/${id}`)
+    axios.get(`https://api.escuelajs.co/api/v1/products/${id}`)
     .then((res) => setPinfo(res.data))
     .catch((err) => console.log(err))
   }, []);
@@ -52,26 +52,19 @@ function Details() {
     <div className="row">
     <aside className="col-lg-6 col-md-4">
         <div className="border rounded-4 mb-3 d-flex justify-content-center">
-          <Link data-fslightbox="mygalley" className="rounded-4" target="_blank" data-type="image" to={pinfo?.image} alt="sneakers">
-            <img style={{maxWidth: "100%", maxHeight: "100vh", margin: "auto"}} className="rounded-4 fit" src={pinfo?.image} alt="sneakers"/>
+          <Link data-fslightbox="mygalley" className="rounded-4" target="_blank" data-type="image" to={pinfo?.images[0]} alt="sneakers">
+            <img style={{maxWidth: "100%", maxHeight: "100vh", margin: "auto"}} className="rounded-4 fit" src={pinfo?.images[0]} alt="sneakers"/>
           </Link>
         </div>
         <div className="d-flex justify-content-center mb-3">
-          <Link data-fslightbox="mygalley" className="border mx-1 rounded-2" target="_blank" data-type="image" to={pinfo?.image} alt="big1">
-            <img width="60" height="60" className="rounded-2" src={pinfo?.image} alt="big1" />
+          {
+            pinfo?.images.map((item) =>(
+              <Link data-fslightbox="mygalley" className="border mx-1 rounded-2" target="_blank" data-type="image" to={pinfo?.images[0]} alt="big1">
+            <img width="60" height="60" className="rounded-2" src={item} alt="big1" />
           </Link>
-          <Link data-fslightbox="mygalley" className="border mx-1 rounded-2" target="_blank" data-type="image" to={pinfo?.image} alt="big2">
-            <img width="60" height="60" className="rounded-2" src={pinfo?.image} alt="big2"/>
-          </Link>
-          <Link data-fslightbox="mygalley" className="border mx-1 rounded-2" target="_blank" data-type="image" to={pinfo?.image} alt="big3">
-            <img width="60" height="60" className="rounded-2" src={pinfo?.image} alt="big3"/>
-          </Link>
-          <Link data-fslightbox="mygalley" className="border mx-1 rounded-2" target="_blank" data-type="image" to={pinfo?.image} alt="big4">
-            <img width="60" height="60" className="rounded-2" src={pinfo?.image} alt="big4"/>
-          </Link>
-          <Link data-fslightbox="mygalley" className="border mx-1 rounded-2" target="_blank" data-type="image" to={pinfo?.image} alt="big">
-            <img width="60" height="60" className="rounded-2" src={pinfo?.image} alt="big" />
-          </Link>
+            ))
+          }
+          
         </div>
          {/* thumbs-wrap.//  */}
         {/* gallery-wrap .end//  */}
@@ -89,10 +82,10 @@ function Details() {
               <BsStarFill color="#E4A11B" size={25}/>
               <BsStarHalf color="#E4A11B" size={25}/>
               <span className="ms-1 text-warning ">
-                {pinfo?.rating.rate}
+                4.3
               </span>
             </div>
-            <span className="text-muted mb-1 me-2">< FaOpencart size={15}/>{pinfo?.rating.count} orders</span>
+            <span className="text-muted mb-1 me-2">< FaOpencart size={15}/>14 orders</span>
             <span className="text-success ms-2">In stock</span>
           </div>
 

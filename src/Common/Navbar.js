@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import cartlogo from './../cartlogo.png'
 import { Link } from 'react-router-dom'
-import { FaShoppingCart } from 'react-icons/fa'
+import { BsCart3 } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
 
 function Navbar() {
 
-  const [total, setTotal] = useState(0)
+  const total = useSelector((state) => state.cart.total)
 
-  function change(){
-    setTotal(total + 1)    
-  }
+  // const [total, setTotal] = useState(0)
+
+  // function change(){
+  //   setTotal(total + 1)    
+  // }
 
 
   return (
@@ -33,12 +36,9 @@ function Navbar() {
               <FaShoppingCart size={36} />
             </Link> */}
             
-                <Link to={"/Cart"} className='cart'><FaShoppingCart size={25} color='red'/></Link>
+                <Link to={"/Cart"} className='cart'><BsCart3 size={25} color='red'/></Link>
                 <span className="cartlogo">{total}</span>
             {/* end navbar-right */}
-
-            <button onClick={() => change()} className='btn btn-dark me-1'>change</button>
-
 
           </div>
         </div>

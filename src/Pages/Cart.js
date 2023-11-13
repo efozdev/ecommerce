@@ -3,6 +3,9 @@ import { RiDeleteBin6Line } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
 function Cart() {
+    
+
+
   return (
     <div className="cart">
     <div class="table-responsive mt-4 container ">
